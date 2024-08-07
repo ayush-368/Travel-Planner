@@ -20,9 +20,6 @@ public class BookingService {
         return bookingRepo.findAll();
     }
 
-    // public List<BookingEntity> getUsersAllBooking(Long userId) {
-    //     return bookingRepo.findAllById(userId);
-    // }
 
     public boolean updateBooking(Long id, BookingEntity bookingEntity) {
         Optional<BookingEntity> optEntity = bookingRepo.findById(id);
@@ -50,6 +47,10 @@ public class BookingService {
             return true;
         }
         return false;
+    }
+
+    public List<BookingEntity> getBookingsByUserId(Long userId) {
+        return bookingRepo.getBookingsByUserId(userId);
     }
     
 }

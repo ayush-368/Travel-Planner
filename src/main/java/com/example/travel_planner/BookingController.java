@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,8 +16,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 
 
-
 @RestController
+@RequestMapping("/travel_planner")
 public class BookingController {
 
     @Autowired
@@ -32,10 +33,11 @@ public class BookingController {
         return bookingService.GetAllBookings();
     }
 
-    // @GetMapping("booking/{userId}")
-    // public List<BookingEntity> getUsersAllBooking(@PathVariable Long userId) {
-    //     return bookingService.getUsersAllBooking(userId);
-    // }
+    @GetMapping("booking/{userId}")
+    public List<BookingEntity> getBookingsByUserId(@PathVariable Long userId) {
+        return bookingService.getBookingsByUserId(userId);
+    }
+    
 
     @PutMapping("booking/{id}")
     public boolean updateBooking(@PathVariable Long id, @RequestBody BookingEntity bookingEntity) {
